@@ -35,8 +35,6 @@ RUN apt-get update \
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 	&& ln -sf /dev/stderr /var/log/nginx/error.log
 
-RUN echo '' > /etc/nginx/conf.d/default.conf
-
 STOPSIGNAL SIGQUIT
 
 COPY docker-entrypoint.sh /entrypoint.sh
