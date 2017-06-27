@@ -8,7 +8,7 @@ echo "  location /api/ {" >> /etc/nginx/conf.d/default.conf
 echo "    proxy_pass http://webapi:8080/api/;" >> /etc/nginx/conf.d/default.conf
 echo "  }" >> /etc/nginx/conf.d/default.conf
 echo "  location / {" >> /etc/nginx/conf.d/default.conf
-echo "    proxy_pass http://frontend:80;" >> /etc/nginx/conf.d/default.conf
+echo "    proxy_pass http://frontend:80/;" >> /etc/nginx/conf.d/default.conf
 echo "  }" >> /etc/nginx/conf.d/default.conf
 echo "}" >> /etc/nginx/conf.d/default.conf
 
