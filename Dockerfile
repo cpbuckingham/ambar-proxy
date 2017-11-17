@@ -1,12 +1,10 @@
 FROM debian:stretch-slim
 
-MAINTAINER RD17 "hello@ambar.cloud"
-
 ENV NGINX_VERSION 1.12.0-1~stretch
 ENV NJS_VERSION   1.12.0.0.1.10-1~stretch
 
 RUN apt-get update \
-	&& apt-get install --no-install-recommends --no-install-suggests -y gnupg1 \
+	&& apt-get install --no-install-recommends --no-install-suggests -y gnupg1 curl \
 	&& \
 	NGINX_GPGKEY=573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62; \
 	found=''; \
@@ -41,3 +39,6 @@ COPY docker-entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 CMD ["/entrypoint.sh"]
+
+HEALTHCHECK --interval=5s --timeout=30s --retries=50 \
+  CMD curl -f localhost:${PORT} || exit 1
